@@ -1,7 +1,11 @@
-console.log('yo')
+text_area = document.getElementById('text_area');
 
-kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
-    // tokenizer is ready
-    var path = tokenizer.tokenize("すもももももももものうち");
-    console.log(path);
-});
+function translate(){
+    const word = text_area.value;
+    kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
+        // tokenizer is ready
+        var path = tokenizer.tokenize(word);
+        console.log(path);
+    });
+}
+
