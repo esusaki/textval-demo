@@ -3,6 +3,10 @@
     src: url('KouzanBrushFont.ttf') format('truetype');
   }
 
+body {
+    background-image: url('matsuri-background.png')
+}
+
 #result {
     font-family: '衡山毛筆フォント';
     text-shadow:
