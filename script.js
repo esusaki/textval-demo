@@ -7,10 +7,14 @@
 const ok_button = document.getElementById('ok_button');
 var result = document.getElementById('result');
 
+const bgm_area = document.getElementById('bgm_area');
+
 ok_button.addEventListener(
     "click",function(){
         const text_area = document.getElementById('text_area');
-        var w = text_area.value
+        var w = text_area.value;
+
+        bgm_area.innerHTML += '<audio src="maou_bgm_ethnic09.mp3" autoplay loop></audio>'
 
         kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
             var path = tokenizer.tokenize(w);
@@ -331,4 +335,3 @@ function omatsurify(tokens){
       }
       result.innerHTML = (newtokens.join(''))
 }
-
