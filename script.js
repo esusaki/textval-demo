@@ -9,12 +9,12 @@ const ok_button = document.getElementById('ok_button');
 ok_button.addEventListener(
     "click",function(){
         const text_area = document.getElementById('text_area');
-        console.log(text_area.value)
+        var w = text_area.value
+
+        kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
+            var path = tokenizer.tokenize(w);
+           console.log(path);
+         });
     }
 )
 
-//kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
-    // tokenizer is ready
-//    var path = tokenizer.tokenize(word);
- //   console.log(path);
-//});
