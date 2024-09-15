@@ -14,7 +14,7 @@ ok_button.addEventListener(
         const text_area = document.getElementById('text_area');
         var w = text_area.value;
 
-        result.innerHTML = '<div style="text-align:center">ローディングしていやす...<br><img src="new-kakigori-kun-roop.gif" width="300px"></div>'
+        result.innerHTML = '<div style="text-align:center">ローディングしていやす...<br><img src="image.gif" width="300px"></div>'
 
         bgm_area.innerHTML += '<audio src="maou_bgm_ethnic09.mp3" autoplay loop></audio>'
         const au = document.getElementsByTagName('audio')[0];
