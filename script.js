@@ -5,6 +5,7 @@
 //}
 
 const ok_button = document.getElementById('ok_button');
+var result = document.getElementById('result');
 
 ok_button.addEventListener(
     "click",function(){
@@ -13,7 +14,7 @@ ok_button.addEventListener(
 
         kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
             var path = tokenizer.tokenize(w);
-            console.log(path);
+            // console.log(path);
             omatsurify(path);
          });
     }
@@ -328,6 +329,6 @@ function omatsurify(tokens){
           newtokens.push(tokens[i].surface_form);
         }
       }
-      console.log(newtokens.join(''))
+      result.innerHTML = (newtokens.join(''))
 }
 
