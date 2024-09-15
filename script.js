@@ -8,7 +8,8 @@ const ok_button = document.getElementById('ok_button');
 
 ok_button.addEventListener(
     "click",function(){
-        console.log('hey')
+        const text_area = document.getElementById('text_area');
+        console.log(text_area.value)
     }
 )
 
