@@ -21,7 +21,7 @@ ok_button.addEventListener(
         au.volume = 0.3;
 
         const body = document.getElementsByTagName('body')[0];
-        body.style = "background-image: url('matsuri-background.png');"
+        body.style = "background-color:rgba(255,255,255,0.84);"
 
         kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
             var path = tokenizer.tokenize(w);
