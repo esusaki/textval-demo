@@ -13,6 +13,7 @@ body {
 }
 
 #result {
+    white-space:pre-wrap;
     font-family: '衡山毛筆フォント';
     text-shadow:
       0.2px 0 0 black,
