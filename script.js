@@ -1,6 +1,5 @@
-text_area = document.getElementById('text_area');
-
 function translate(){
+    text_area = document.getElementById('text_area');
     const word = text_area.value;
     alert(word);
 }
