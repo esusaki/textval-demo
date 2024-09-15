@@ -336,5 +336,19 @@ function omatsurify(tokens){
           newtokens.push(tokens[i].surface_form);
         }
       }
+        // ここから追加したコード
+        // 文末にお祭りっぽい絵文字を追加
+        const festivalEmojis = ['👘', '🎆', '🏮'];
+        const sentenceEndingPunctuation = ['。', '！', '？', '!', '?'];
+
+        for (let i = 0; i < newtokens.length; i++) {
+          if (sentenceEndingPunctuation.includes(newtokens[i])) {
+            const randomEmoji = festivalEmojis[Math.floor(Math.random() * festivalEmojis.length)];
+            newtokens.splice(i + 1, 0, randomEmoji);
+            i++; // 絵文字を追加したのでインデックスを進める
+          }
+        }
+        // 追加部分ここまで
+
       result.innerHTML = (newtokens.join(''))
 }
