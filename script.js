@@ -9,3 +9,6 @@ function translate(){
     });
 }
 
+function translate2(){
+    alert('yo');
+}
