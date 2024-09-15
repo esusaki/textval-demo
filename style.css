@@ -3,7 +3,7 @@
     src: url('KouzanBrushFont.ttf') format('truetype');
   }
 
-body {
+#bg-container {
     background-image: url('matsuri-background.png');
     background-size: cover !important;
     background-repeat: no-repeat !important;
