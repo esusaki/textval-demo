@@ -328,6 +328,6 @@ function omatsurify(tokens){
           newtokens.push(tokens[i].surface_form);
         }
       }
-      console.log(newtokens)
+      console.log(newtokens.join(''))
 }
 
