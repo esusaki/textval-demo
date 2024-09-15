@@ -2,3 +2,12 @@
     font-family: '衡山毛筆フォント';
     src: url('KouzanBrushFont.ttf') format('truetype');
   }
+
+#result {
+    font-family: '衡山毛筆フォント';
+    text-shadow:
+      0.2px 0 0 black,
+      -0.2px 0 0 black,
+      0 0.2px 0 black,
+      0 -0.2px 0 black;
+  }
