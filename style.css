@@ -3,7 +3,7 @@
     src: url('KouzanBrushFont.ttf') format('truetype');
   }
 
-#bg-container {
+body {
     background-image: url('matsuri-background.png');
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -11,7 +11,6 @@
     background-size: 100% auto;
     background-color:rgba(255,255,255,0.84);
     background-blend-mode:lighten;
-    height: 800px;
 }
 
 #result {
@@ -24,3 +23,7 @@
     padding :10px;
     font-size: 30px;
   }
+
+textarea{
+    background:none;
+}
