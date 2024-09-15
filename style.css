@@ -10,4 +10,6 @@
       -0.2px 0 0 black,
       0 0.2px 0 black,
       0 -0.2px 0 black;
+    padding :10px;
+    font-size: 30px;
   }
