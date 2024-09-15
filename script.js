@@ -19,6 +19,35 @@ ok_button.addEventListener(
     }
 )
 
+function norn_first_asshi(surface_form){
+    const norn_first = [
+      '私', 'わたし', 'ワタシ', 'わたくし', 'ワタクシ', 'あたし', 'アタシ',
+      '俺', 'おれ', 'オレ', '僕', 'ぼく', 'ボク', 
+      'おら', 'オラ', 'おいら', 'オイラ',
+      'わい', 'ワイ', 'わし', 'ワシ',
+    ];
+    if (norn_first.includes(surface_form)) {
+      return 1;
+    }
+  }
+  // 二人称→おめえ、おめえさん、てめえ
+  function norn_second_omee(surface_form){
+    const norn_second = [
+      'あなた', 'アナタ',
+      '君', 'きみ', 'キミ', 
+      'お前', 'おまえ', 'オマエ',
+    ];
+    if (norn_second.includes(surface_form)) {
+      return 1;
+    }
+  }
+  // 五段活用の連用形
+  function verb_whitch(basic_form){
+    const verb_godan_basic = ["く", "ぐ", "す", "つ", "ぬ", "ぶ", "む", "る", "う"];
+    const verb_godan_renyou = ["き", "ぎ", "し", "ち", "に", "び", "み", "り", "い"];
+    return verb_godan_renyou[verb_godan_basic.indexOf(basic_form.slice(-1))]
+  }
+
 function omatsurify(tokens){
     var newtokens = [];
 
