@@ -14,7 +14,7 @@ ok_button.addEventListener(
         const text_area = document.getElementById('text_area');
         var w = text_area.value;
 
-        bgm_area.innerHTML += '<audio src="maou_bgm_ethnic09.mp3" autoplay loop volume=0.3></audio>'
+        bgm_area.innerHTML += '<audio src="maou_bgm_ethnic09.mp3" autoplay loop volume=0.1></audio>'
 
         const body = document.getElementsByTagName('body')[0];
         body.style = "background-image: url('matsuri-background.png');"
