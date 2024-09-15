@@ -6,8 +6,8 @@ function translate(){
 }
 
 
-kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
+//kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
     // tokenizer is ready
-    var path = tokenizer.tokenize(word);
-    console.log(path);
-});
+//    var path = tokenizer.tokenize(word);
+ //   console.log(path);
+//});
