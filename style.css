@@ -4,7 +4,6 @@
   }
 
 body {
-    background-image: url('matsuri-background.png');
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;

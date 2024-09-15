@@ -16,6 +16,9 @@ ok_button.addEventListener(
 
         bgm_area.innerHTML += '<audio src="maou_bgm_ethnic09.mp3" autoplay loop></audio>'
 
+        const body = document.getElementsByTagName('body')[0];
+        body.style = "background-image: url('matsuri-background.png');"
+
         kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
             var path = tokenizer.tokenize(w);
             // console.log(path);
