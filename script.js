@@ -61,6 +61,18 @@ function norn_first_asshi(surface_form){
   }
 
 function omatsurify(tokens){
+    // GIF画像用のスタイル要素を作成してページに追加
+    const omikoshiUrl = "img/omikoshi_walking-long.gif";
+    const omikoshiImage = document.createElement('img');
+    omikoshiImage.src = omikoshiUrl;
+    omikoshiImage.style.position = 'fixed';
+    omikoshiImage.style.top = '70.5%';
+    omikoshiImage.style.left = '0%';
+    omikoshiImage.style.width = '120%'; // 幅を百分率で指定
+    omikoshiImage.style.height = 'auto'; // 高さを自動調整
+    omikoshiImage.style.zIndex = '1000'; // 他の要素の上に表示するためのスタイル
+    omikoshiImage.style.pointerEvents = 'none'; // 画像がクリックを妨げないようにする
+    document.body.appendChild(omikoshiImage);
     var newtokens = [];
 
     for (let i = 0; i < tokens.length; i++) {
@@ -340,19 +352,19 @@ function omatsurify(tokens){
           newtokens.push(tokens[i].surface_form);
         }
       }
-        // ここから追加したコード
-        // 文末にお祭りっぽい絵文字を追加
-        const festivalEmojis = ['👘', '🎆', '🏮'];
-        const sentenceEndingPunctuation = ['。', '！', '？', '!', '?'];
+      // ここから追加したコード
+      // 文末にお祭りっぽい絵文字を追加
+      const festivalEmojis = ['👘', '🎆', '🏮'];
+      const sentenceEndingPunctuation = ['。', '！', '？', '!', '?'];
 
-        for (let i = 0; i < newtokens.length; i++) {
-          if (sentenceEndingPunctuation.includes(newtokens[i])) {
-            const randomEmoji = festivalEmojis[Math.floor(Math.random() * festivalEmojis.length)];
-            newtokens.splice(i + 1, 0, randomEmoji);
-            i++; // 絵文字を追加したのでインデックスを進める
-          }
+      for (let i = 0; i < newtokens.length; i++) {
+        if (sentenceEndingPunctuation.includes(newtokens[i])) {
+          const randomEmoji = festivalEmojis[Math.floor(Math.random() * festivalEmojis.length)];
+          newtokens.splice(i + 1, 0, randomEmoji);
+          i++; // 絵文字を追加したのでインデックスを進める
         }
-        // 追加部分ここまで
+      }
+      // 追加部分ここまで
 
       result.innerHTML = (newtokens.join(''))
 }
