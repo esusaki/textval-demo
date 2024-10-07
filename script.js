@@ -14,14 +14,14 @@ ok_button.addEventListener(
         const text_area = document.getElementById('text_area');
         var w = text_area.value;
 
-        result.innerHTML = '<div style="text-align:center">ローディングしていやす...<br><img src="image.gif" width="300px"></div>'
+        result.innerHTML = '<div style="text-align:center;color: aliceblue;"><br>ローディングしていやす...<br><br><img src="image.gif" width="300px"></div>'
 
         bgm_area.innerHTML += '<audio src="maou_bgm_ethnic09.mp3" autoplay loop></audio>'
         const au = document.getElementsByTagName('audio')[0];
         au.volume = 0.3;
 
-        const body = document.getElementsByTagName('body')[0];
-        body.style = "background-color:rgba(255,255,255,0.84);"
+        // const body = document.getElementsByTagName('body')[0];
+        // body.style = "text-align: center;background-color: rgb(44, 48, 57, 0.84);"
 
         kuromoji.builder({ dicPath: "dict" }).build(function (err, tokenizer) {
             var path = tokenizer.tokenize(w);
@@ -61,6 +61,38 @@ function norn_first_asshi(surface_form){
   }
 
 function omatsurify(tokens){
+    const backgroundUrl = "matsuri-background.png";
+
+    // 背景を変更するスタイルを作成
+    const backgroundStyleContent = `
+    body {
+      background-image: url('${backgroundUrl}') !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      background-size: 100% auto;
+      background-color:rgba(255,255,255,0.1);
+      background-blend-mode:lighten;
+    }
+    `;
+    // 背景用のスタイル要素を作成してページに追加
+    const backgroundStyleElement = document.createElement('style');
+    backgroundStyleElement.textContent = backgroundStyleContent;
+    document.head.appendChild(backgroundStyleElement);
+
+    // GIF画像用のスタイル要素を作成してページに追加
+    const omikoshiUrl = "omikoshi_walking-long.gif";
+    const omikoshiImage = document.createElement('img');
+    omikoshiImage.src = omikoshiUrl;
+    omikoshiImage.style.position = 'fixed';
+    omikoshiImage.style.top = '67%';
+    omikoshiImage.style.left = '0%';
+    omikoshiImage.style.width = '100%'; // 幅を百分率で指定
+    omikoshiImage.style.height = 'auto'; // 高さを自動調整
+    omikoshiImage.style.zIndex = '1000'; // 他の要素の上に表示するためのスタイル
+    omikoshiImage.style.pointerEvents = 'none'; // 画像がクリックを妨げないようにする
+    document.body.appendChild(omikoshiImage);
+
     var newtokens = [];
 
     for (let i = 0; i < tokens.length; i++) {
@@ -339,20 +371,21 @@ function omatsurify(tokens){
         }else {
           newtokens.push(tokens[i].surface_form);
         }
-      }
-        // ここから追加したコード
-        // 文末にお祭りっぽい絵文字を追加
-        const festivalEmojis = ['👘', '🎆', '🏮'];
-        const sentenceEndingPunctuation = ['。', '！', '？', '!', '?'];
+    }
+    // ここから追加したコード
+    // 文末にお祭りっぽい絵文字を追加
+    const festivalEmojis = ['👘', '🎆', '🏮'];
+    const sentenceEndingPunctuation = ['。', '！', '？', '!', '?'];
 
-        for (let i = 0; i < newtokens.length; i++) {
-          if (sentenceEndingPunctuation.includes(newtokens[i])) {
-            const randomEmoji = festivalEmojis[Math.floor(Math.random() * festivalEmojis.length)];
-            newtokens.splice(i + 1, 0, randomEmoji);
-            i++; // 絵文字を追加したのでインデックスを進める
-          }
+    for (let i = 0; i < newtokens.length; i++) {
+        if (sentenceEndingPunctuation.includes(newtokens[i])) {
+          const randomEmoji = festivalEmojis[Math.floor(Math.random() * festivalEmojis.length)];
+          newtokens.splice(i + 1, 0, randomEmoji);
+          i++; // 絵文字を追加したのでインデックスを進める
         }
-        // 追加部分ここまで
+    }
+    // 追加部分ここまで
 
-      result.innerHTML = (newtokens.join(''))
+    result.innerHTML = (newtokens.join(''))
+    result.style = "width: 30%; text-align: center; font-size: 2em; color:white; font-weight: bold; margin-top: 20px;"
 }

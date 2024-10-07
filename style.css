@@ -1,7 +1,7 @@
 @font-face {
     font-family: '衡山毛筆フォント';
     src: url('KouzanBrushFont.ttf') format('truetype');
-  }
+}
 
 body {
     background-size: cover !important;
@@ -10,7 +10,7 @@ body {
     background-size: 100% auto;
     background-color:rgba(255,255,255,1);
     background-blend-mode:lighten;
-    background-image: url('matsuri-background.png');
+    /* background-image: url('matsuri-background.png'); */
 }
 
 #result {
@@ -23,7 +23,7 @@ body {
       0 -0.2px 0 black;
     padding :10px;
     font-size: 30px;
-  }
+}
 
 textarea{
     background:none;
