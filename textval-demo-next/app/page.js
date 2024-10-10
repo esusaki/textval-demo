@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import convertText from "./convert";
+import Header from "./components/layout/header";
 import "./style.css"
 
 export default function Home() {
@@ -21,14 +22,8 @@ export default function Home() {
   }
 
   return (
-    <div style={{"textAlign":"center","padding":"10px"}}>
-      <header>
-        <h2>
-          <a href="https://chromewebstore.google.com/detail/textval/edhdcmcmaiakchhcembkhonndipcmeob?hl=ja&utm_source=ext_sidebar" target="blank_">
-            <img src="images/odango.gif" width="300px" />
-          </a>
-        </h2>
-      </header>
+    <div style={{"textAlign":"center","padding":"50px"}}>
+      <Header />
 
       <main>
         <span id="bgm_area"></span>

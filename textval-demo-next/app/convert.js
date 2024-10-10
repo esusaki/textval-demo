@@ -42,6 +42,7 @@ function omatsurify(tokens){
       background-attachment: fixed !important;
       background-size: 100% auto;
       background-blend-mode:lighten;
+      background-position: 0 120px; 
     }
     `;
     
@@ -50,6 +51,7 @@ function omatsurify(tokens){
     // 背景用のスタイル要素を作成してページに追加
     const backgroundStyleElement = document.createElement('style');
     backgroundStyleElement.textContent = backgroundStyleContent;
+    backgroundStyleElement.style.position = 'relative';
     document.head.appendChild(backgroundStyleElement);
 
     // GIF画像用のスタイル要素を作成してページに追加
