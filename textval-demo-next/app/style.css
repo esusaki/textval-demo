@@ -20,6 +20,13 @@
 #headerRebbon {
     text-align: center;
     font-size: 20px;
+    background-color: lightskyblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 5px;
 }
 
 header {
@@ -30,7 +37,8 @@ header {
     width: 100%;
     height: auto;
     background-color: rgb(44, 48, 57);
-    padding: 15px;
+    padding-top: 35px;
+    box-sizing: border-box;
 }
 
 a {

@@ -42,7 +42,7 @@ function omatsurify(tokens){
       background-attachment: fixed !important;
       background-size: 100% auto;
       background-blend-mode:lighten;
-      background-position: 0 120px; 
+      background-position: 0 98px; 
     }
     `;
     
