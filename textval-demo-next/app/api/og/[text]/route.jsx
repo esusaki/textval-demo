@@ -19,7 +19,7 @@ const fontData = fs.readFileSync(fontPath);
     (
       <div
         style={{
-          backgroundImage: "url(localhost:3000/ogp_background.png)",
+          backgroundImage: "url(/images/ogp_background.png)",
           color: 'white',
           background: 'black',
           width: '100%',
