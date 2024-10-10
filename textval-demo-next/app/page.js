@@ -36,7 +36,7 @@ export default function Home() {
         <textarea rows = "5" id = "textInput" value={userInput} onChange={(e) => { setUserInput(e.target.value) }}></textarea>
         <button onClick={() => { buttonClicked() }} id="ok_button">OKでい</button>
 
-        {isLoading ? <div style={{"text-align":"center"}}>ローディングしていやす...<br/><img src="images/loading.gif" width="300px"/></div> : ""}
+        {isLoading ? <div style={{"text-align":"center","color":"white","font-size":"2em","margin":"20px"}}>ローディングしていやす...<br/><img src="images/loading.gif" width="300px" style={{"margin":"10px"}}/></div> : ""}
 
         {displayText === "" ?
           // 結果がなかったら何も表示しない
