@@ -25,7 +25,7 @@ export default function showOGP({params}){
                 <meta property = "og:image" content = {`https://textval-demo.vercel.app/api/og/${omatsuri_text}`}></meta>
 
                 <meta name="twitter:title" content="textval" />
-                <meta name = "twitter:card" content = "summary_large_image"></meta>
+                <meta name = "twitter:card" content = "summary_large_image" />
             </head>
             <body>
             </body>
