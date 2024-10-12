@@ -7,8 +7,8 @@ import path from 'path';
 export async function GET(req, {params}) {
   var {text} = params;
 
-  if (text.length > 90){
-    text = text.slice(0,90);
+  if (text.length > 50){
+    text = text.slice(0,50);
     text = text + "...";  
   }
 
@@ -21,7 +21,7 @@ const fontData = fs.readFileSync(fontPath);
         style={{
           backgroundImage: "url(https://textval-demo.vercel.app/images/ogp_background.png)",
           color: 'white',
-          background: 'black',
+          background: 'rgb(44, 48, 57)',
           width: '100%',
           height: '100%',
           padding: '20px 30px',
@@ -29,7 +29,7 @@ const fontData = fs.readFileSync(fontPath);
           justifyContent: 'center',
           alignItems: 'center',
           fontFamily:'"Kouzan"',
-          fontSize: 60
+          fontSize: 80,
         }}
       >
         {text}
