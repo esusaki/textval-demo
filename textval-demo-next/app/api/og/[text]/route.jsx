@@ -19,7 +19,7 @@ const fontData = fs.readFileSync(fontPath);
     (
       <div
         style={{
-          backgroundImage: "url(https://textval-demo.vercel.app/images/ogp_background.png)",
+          backgroundImage: "url(https://demo-textval.vercel.app/images/ogp_background.png)",
           color: 'white',
           background: 'rgb(40,44,52)',
           width: '100%',

@@ -32,7 +32,7 @@ export default function Home() {
       <head>
         <meta property = "og:title" content = "textval demo" />
         <meta property = "og:description" content = "お祭り翻訳の拡張機能textvalのデモページ" />
-        <meta property = "og:image" content = "https://textval-demo.vercel.app/images/top-page-ogp.png"/>
+        <meta property = "og:image" content = "https://demo-textval.vercel.app/images/top-page-ogp.png"/>
 
         <meta name="twitter:title" content="textval" />
         <meta name = "twitter:card" content = "summary_large_image" />
@@ -58,7 +58,7 @@ export default function Home() {
                       href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                       className="twitter-share-button"
                       data-text={'textvalでお祭り翻訳しました！'}
-                      data-url={encodeURI("https://textval-demo.vercel.app/og/" + displayText)}
+                      data-url={encodeURI("https://demo-textval.vercel.app/og/" + displayText)}
                       data-show-count="false"
                     >
                         Tweet
