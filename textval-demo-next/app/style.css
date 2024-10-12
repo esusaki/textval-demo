@@ -20,7 +20,7 @@
 #headerRebbon {
     text-align: center;
     font-size: 20px;
-    background-color: lightskyblue;
+    background-color: rgb(115,195,227);
     position: fixed;
     top: 0;
     left: 0;
@@ -40,7 +40,7 @@
 }
 
 #kakigoriiKun{
-    width: 120px;
+    width: 200px;
 }
 
 header {
@@ -108,7 +108,7 @@ font-family: 'KouzanBrush';
     }
 
     #kakigoriiKun{
-        width: 100px;
+        width: 120px;
     }
 }
 
@@ -130,6 +130,6 @@ font-family: 'KouzanBrush';
     }
 
     #kakigoriiKun{
-        width: 80px;
+        width: 100px;
     }
 }
