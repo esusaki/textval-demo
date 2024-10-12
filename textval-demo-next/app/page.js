@@ -32,7 +32,7 @@ export default function Home() {
       <head>
         <meta property = "og:title" content = "textval demo" />
         <meta property = "og:description" content = "お祭り翻訳の拡張機能textvalのデモページ" />
-        <meta property = "og:image" content = {`images/top-page-ogp.png`} />
+        <meta property = "og:image" content = "http://textval-demo.vercel.app/images/top-page-ogp.png"/>
 
         <meta name="twitter:title" content="textval" />
         <meta name = "twitter:card" content = "summary_large_image" />
