@@ -59,7 +59,7 @@ export default function Home() {
                       Tweet
                   </a>
                   {/* charSetは非推奨らしいが、一応エラーは消える */}
-                  <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
             <img src="images/omikoshi_walking-long.gif" id="omikoshi" alt="おみこし"></img>
