@@ -20,7 +20,7 @@ export default function showOGP({params}){
     return (
         <html>
             <head>
-                <meta property = "og:title" content = "textval demo"></meta>
+                <meta property = "og:title" content = "textval-demo"></meta>
                 <meta property = "og:description" content = "お祭り翻訳の拡張機能textvalのデモページ"></meta>
                 <meta property = "og:image" content = {`https://textval-demo.vercel.app/api/og/${omatsuri_text}`}></meta>
 
