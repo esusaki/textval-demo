@@ -29,6 +29,20 @@
     padding: 5px;
 }
 
+#omikoshi {
+    position: fixed;
+    top: 67%;
+    left: 0%;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#kakigoriiKun{
+    width: 120px;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -58,7 +72,7 @@ body {
     background-size: 100% auto;
     /* background-color:rgba(255,255,255,0.1); */
     /* background-blend-mode:lighten; */
-    background-color: rgb(44, 48, 57);
+    background-color: rgb(40,44,52);
     position: relative;
     padding-top: 120px;
 }
@@ -73,4 +87,49 @@ body {
 
 body {
 font-family: 'KouzanBrush';
+}
+
+/* メディアクエリ */
+@media (max-width: 768px) {
+    #ok_button {
+        width: 90%;
+        font-size: 18px;
+    }
+
+    #textInput {
+        width: 90%;
+        font-size: 18px;
+    }
+
+    #omikoshi {
+        top: 70%;
+        right: 100%;
+        width: 180%;
+    }
+
+    #kakigoriiKun{
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    #ok_button {
+        width: 95%;
+        font-size: 16px;
+    }
+
+    #textInput {
+        width: 95%;
+        font-size: 16px;
+    }
+
+    #omikoshi {
+        top: 85%;
+        right: 100%;
+        width: 180%;
+    }
+
+    #kakigoriiKun{
+        width: 80px;
+    }
 }
