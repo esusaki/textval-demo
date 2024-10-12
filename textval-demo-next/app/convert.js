@@ -42,6 +42,7 @@ function omatsurify(tokens){
       background-attachment: fixed !important;
       background-size: 100% auto;
       background-blend-mode:lighten;
+      background-position: 0 98px; 
     }
     `;
     
@@ -50,20 +51,21 @@ function omatsurify(tokens){
     // 背景用のスタイル要素を作成してページに追加
     const backgroundStyleElement = document.createElement('style');
     backgroundStyleElement.textContent = backgroundStyleContent;
+    backgroundStyleElement.style.position = 'relative';
     document.head.appendChild(backgroundStyleElement);
 
-    // GIF画像用のスタイル要素を作成してページに追加
-    const omikoshiUrl = "images/omikoshi_walking-long.gif";
-    const omikoshiImage = document.createElement('img');
-    omikoshiImage.src = omikoshiUrl;
-    omikoshiImage.style.position = 'fixed';
-    omikoshiImage.style.top = '67%';
-    omikoshiImage.style.left = '0%';
-    omikoshiImage.style.width = '100%'; // 幅を百分率で指定
-    omikoshiImage.style.height = 'auto'; // 高さを自動調整
-    omikoshiImage.style.zIndex = '1000'; // 他の要素の上に表示するためのスタイル
-    omikoshiImage.style.pointerEvents = 'none'; // 画像がクリックを妨げないようにする
-    document.body.appendChild(omikoshiImage);
+    // // GIF画像用のスタイル要素を作成してページに追加
+    // const omikoshiUrl = "images/omikoshi_walking-long.gif";
+    // const omikoshiImage = document.createElement('img');
+    // omikoshiImage.src = omikoshiUrl;
+    // omikoshiImage.style.position = 'fixed';
+    // omikoshiImage.style.top = '67%';
+    // omikoshiImage.style.left = '0%';
+    // omikoshiImage.style.width = '100px'; // 幅を百分率で指定
+    // omikoshiImage.style.height = 'auto'; // 高さを自動調整
+    // omikoshiImage.style.zIndex = '1000'; // 他の要素の上に表示するためのスタイル
+    // omikoshiImage.style.pointerEvents = 'none'; // 画像がクリックを妨げないようにする
+    // document.body.appendChild(omikoshiImage);
 
     var newtokens = [];
 
