@@ -5,6 +5,38 @@ import convertText from "./convert";
 import Header from "./components/layout/header";
 import "./style.css"
 
+// 季節を判定する関数
+function getSeason(){
+  const now = new Date();
+  const currentYear = now.getFullYear();
+
+  const startChristmasMonth = 12;
+  const startChristmasDay = 1;
+  const endChristmasMonth = 12;
+  const endChristmasDay = 25;
+
+  const startChristmas = new Date(currentYear, startChristmasMonth - 1, startChristmasDay); // 12月1日の0時0分から
+  const endChristmas = new Date(currentYear, endChristmasMonth - 1, endChristmasDay + 1); // 12月26日の0時0分まで
+
+  const startNewYearMonth = 1;
+  const startNewYearDay = 1;
+  const endNewYearMonth = 1;
+  const endNewYearDay = 7;
+
+  const startNewYear = new Date(currentYear, startNewYearMonth - 1, startNewYearDay); // 1月1日の0時0分から
+  const endNewYear = new Date(currentYear, endNewYearMonth - 1, endNewYearDay + 1); // 1月8日の0時0分まで
+
+  if (now >= startChristmas && now <= endChristmas) {
+    const daysUntilChristmas = Math.ceil((endChristmas - now) / (1000 * 60 * 60 * 24) - 1);
+    return { season: "Christmas", daysUntilEvent: daysUntilChristmas };
+  } else if (now >= startNewYear && now <= endNewYear && ((currentYear - 3) % 12 == 6)) {
+    const daysUntilNewYear = Math.ceil((endNewYear - now) / (1000 * 60 * 60 * 24) - 1);
+    return { season: "NewYear_snake", daysUntilEvent: daysUntilNewYear };
+  } else {
+    return { season: "None", daysUntilEvent: null };
+  }
+}
+
 export default function Home() {
 
   const [userInput, setUserInput] = useState("");
@@ -26,6 +58,41 @@ export default function Home() {
     await setDisplayText(result);
     setIsLoading(false);
   }
+
+  const seasonInfo = getSeason();
+  var omikoshiUrl;
+  var omikoshiDescription;
+
+  if (seasonInfo.season == "Normal"){
+    omikoshiUrl = "images/omikoshi_walking-long.gif";
+    omikoshiDescription = "お祭りでい";
+  } else if (seasonInfo.season == "NewYear_snake"){
+    omikoshiUrl = "images/NewYear_snake.gif";
+    omikoshiDescription = `1/1 元旦<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
+  }else {
+    omikoshiUrl = "images/Christmas.gif";
+    omikoshiDescription = `12/25 クリスマス<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
+  }
+
+  const [tooltipStyle, setTooltipStyle] = useState({});
+
+  const handleMouseMove = (e) => {
+    const screenWidth = window.innerWidth;
+    const tooltipWidth = 200; // ツールチップの幅を適切に設定してください
+    let left = e.clientX + 10;
+    let top = e.clientY - 20;
+
+    if (e.clientX > screenWidth / 2) {
+      left = e.clientX - tooltipWidth - 10;
+    } else if (e.clientX < screenWidth / 2) {
+      left = e.clientX + 10;
+    }
+
+    setTooltipStyle({
+      left: left + 'px',
+      top: top + 'px',
+    });
+  };
 
   return (
     <html style={{"textAlign":"center","padding":"50px"}}>
@@ -67,7 +134,17 @@ export default function Home() {
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                   </div>
               </div>
-              <img src="images/omikoshi_walking-long.gif" id="omikoshi" alt="おみこし"></img>
+              <div className="omikoshiImage" onMouseMove={handleMouseMove}>
+                <img src={omikoshiUrl} id="omikoshi" alt="Omikoshi"></img>
+                <div
+                  className="omikoshiText"
+                  style={tooltipStyle}
+                  dangerouslySetInnerHTML={{
+                    __html: omikoshiDescription
+                  }}
+                >
+                </div>
+              </div>
             </>
           }
         </main>
