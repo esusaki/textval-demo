@@ -78,15 +78,15 @@ body {
 }
 
 @font-face {
-    font-family: 'KouzanBrush';
-    src: url('./fonts/KouzanBrushFont.ttf') format('truetype');
+    font-family: 'tamanegi';
+    src: url('./fonts/tamanegi.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
   
 
 body {
-font-family: 'KouzanBrush';
+font-family: 'tamanegi';
 }
 
 /* メディアクエリ */
