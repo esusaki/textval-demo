@@ -19,16 +19,16 @@
 }
 
 .flex-container {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
 }
   
-.flex-container > a {
+/* .flex-container > a {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-}
+} */
 
 /* @app/component/layout/omatsuri.jsx */
 #textInput {
@@ -107,7 +107,7 @@ body {
     /* background-blend-mode:lighten; */
     background-color: rgb(40,44,52);
     position: relative;
-    padding-top: 120px;
+    padding-top: 95px;
 }
 
 @font-face {

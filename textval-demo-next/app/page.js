@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Timer from "./components/layout/timer";
 import Omatsuri from "./components/layout/omatsuri";
-// import Header from "./components/layout/header";
-import Link from "next/link";
+import Header from "./components/layout/header";
+// import Link from "next/link";
 import "./style.css"
 
 export default function Home() {
@@ -24,8 +24,8 @@ export default function Home() {
         <meta name = "twitter:card" content = "summary_large_image" />
       </head>
       <body>
-        {/* <Header /> */}
-        <header>
+        <Header />
+        {/* <header>
           <nav>
             <div id='headerRebbon'>
               <a 
@@ -50,8 +50,19 @@ export default function Home() {
               />
             </div>
           </h2>
-        </header>
-        {showTimer ? <Timer /> : <Omatsuri />}
+        </header> */}
+        <div className="flex-container">
+          <div id="kirikae-button">
+            <img 
+              src="images/kirikae-button.png" 
+              alt="切り替えボタン" 
+              width="30px" 
+              id="switch-button" 
+              onClick={handleToggle}
+            />
+          </div>
+          {showTimer ? <Timer /> : <Omatsuri />}
+        </div>
       </body>
     </html>
   );
