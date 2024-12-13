@@ -190,16 +190,16 @@ export default function Timer(){
     <main>
       {/* <div id="tab_pomodoro" style={{ display: 'none' }}> */}
       <div id="tab_pomodoro">
-        <p style={{ fontSize: '14px', letterSpacing: '2px', color: 'white' }}>ポモドーロタイマーでい</p>
+        <p style={{ fontSize: '18px', letterSpacing: '6px', color: 'white' }}>ポモドーロタイマーでい</p>
 
-        <div style={{ fontSize: '16px' }} id="timeFormContainer">
+        <div style={{ fontSize: '20px' }} id="timeFormContainer">
           <div className="timeForm"> 💻作業 
             <input 
               type="number"
               value={startTime}
               id="sagyouTimeInput"
               onChange={(e) => { setStartTime(e.target.value); setTimeLeft(e.target.value * 60); }}
-              style={{ textAlign: 'center', margin: '5px', borderRadius: '5px', backgroundColor: 'white', border: 'none', fontSize: '22px', width: '60px', color: '#555' }}
+              style={{ textAlign: 'center', margin: '5px', borderRadius: '5px', backgroundColor: 'white', border: 'none', fontSize: '26px', width: '60px', color: '#555' }}
             />
                 分
           </div>
@@ -209,14 +209,14 @@ export default function Timer(){
               value={stopTime}
               id="kyukeiTimeInput"
               onChange={(e) => { setStopTime(e.target.value) }}
-              style={{ textAlign: 'center', margin: '5px', borderRadius: '5px', backgroundColor: 'white', border: 'none', fontSize: '22px', width: '60px', color: '#555' }}
+              style={{ textAlign: 'center', margin: '5px', borderRadius: '5px', backgroundColor: 'white', border: 'none', fontSize: '26px', width: '60px', color: '#555' }}
             />
               分
           </div>
         </div>
 
         <div id="showTimer">
-          <div style={{ margin: '5px', color: 'white' }}>
+          <div style={{ marginTop: '12px', color: 'white' }}>
             <span id="periodLabel">{isWorkPeriod ? '💻作業' : '🏮休憩'}</span> 
             <span className="timer">{formatTime(timeLeft)}</span>
           </div>

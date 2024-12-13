@@ -107,7 +107,7 @@ body {
     /* background-blend-mode:lighten; */
     background-color: rgb(40,44,52);
     position: relative;
-    padding-top: 95px;
+    padding-top: 85px;
 }
 
 @font-face {
@@ -209,16 +209,17 @@ font-family: 'tamanegi';
 }
 
 #showTimer {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .timer{
-    font-size: 22px;
+    font-size: 26px;
 }
 
 .pomodoro_buttons{
     padding: 5px;
     margin: 5px;
+    margin-top: 10px;
     border-radius: 10px;
     width: 80px;
     border: none;
