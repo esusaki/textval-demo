@@ -1,7 +1,7 @@
 "use client"
 
 import "@/app/style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getSeason } from "@/app/components/layout/omatsuri";;
 
 function addBackgroundImage() {
@@ -38,6 +38,44 @@ function removeBackgroundImage() {
   }
 } 
 
+// 通知を送る関数を作成
+const sendRestNotification = () => {
+  if (Notification.permission === 'granted') {
+    new Notification('お疲れ様でごぜぇやす！🏮', {
+      body: 'そろそろ休憩しねぇ？👘',
+      icon: 'images/happy-happi-last.png'
+    });
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        new Notification('お疲れ様でごぜぇやす！🏮', {
+          body: 'そろそろ休憩しねぇ？👘',
+          icon: 'images/happy-happi-last.png'
+        });
+      }
+    });
+  }
+};
+
+// 通知を送る関数を作成
+const sendWorkNotification = () => {
+  if (Notification.permission === 'granted') {
+    new Notification('作業時間でい！🏮', {
+      body: '調子はどうでごぜぇやすか？🎆',
+      icon: 'images/happy-happi-first.png'
+    });
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        new Notification('作業時間でい！🏮', {
+          body: '調子はどうでごぜぇやすか？🎆',
+          icon: 'images/happy-happi-first.png'
+        });
+      }
+    });
+  }
+};
+
 export default function Timer(){
   const [startTime, setStartTime] = useState(25);
   const [stopTime, setStopTime] = useState(5);
@@ -59,9 +97,26 @@ export default function Timer(){
     return () => clearInterval(timer);
   }, [isRunning, timeLeft, startTime, stopTime]);
 
+  // 前回のisWorkPeriodの状態を保持するためのrefを作成
+  const prevIsWorkPeriod = useRef();
+
   useEffect(() => {
-    if (!isWorkPeriod) {
+    // isWorkPeriodがtrueに変化したときに一度だけ通知を送る
+    if (isWorkPeriod) {
+      removeBackgroundImage();
+      if (isRunning && prevIsWorkPeriod.current !== isWorkPeriod){
+        sendWorkNotification();
+      }
+      const sounds = document.getElementById('sounds');
+      if (sounds) {
+        sounds.pause();
+        sounds.currentTime = 0;
+      }
+    } else if (!isWorkPeriod) {
       addBackgroundImage();
+      if (isRunning && prevIsWorkPeriod.current !== isWorkPeriod){
+        sendRestNotification(); 
+      }
       const sounds = document.getElementById('sounds');
       if (sounds) {
         sounds.pause();
@@ -69,14 +124,10 @@ export default function Timer(){
         sounds.volume = 0.3;
         sounds.play();
       }
-    } else {
-      removeBackgroundImage();
-      const sounds = document.getElementById('sounds');
-      if (sounds) {
-        sounds.pause();
-        sounds.currentTime = 0;
-      }
     }
+
+    // 現在のisWorkPeriodの状態をrefに保存
+    prevIsWorkPeriod.current = isWorkPeriod;
   }, [isWorkPeriod]);
 
   const handleStart = () => {
