@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Timer from "./components/layout/timer";
 import Omatsuri from "./components/layout/omatsuri";
-import Header from "./components/layout/header";
+// import Header from "./components/layout/header";
+import Link from "next/link";
 import "./style.css"
 
 export default function Home() {
@@ -23,17 +24,34 @@ export default function Home() {
         <meta name = "twitter:card" content = "summary_large_image" />
       </head>
       <body>
-        <Header />
+        {/* <Header /> */}
+        <header>
+          <nav>
+            <div id='headerRebbon'>
+              <a 
+                href="https://chromewebstore.google.com/detail/textval/edhdcmcmaiakchhcembkhonndipcmeob?hl=ja&utm_source=ext_sidebar"
+                target="blank_"
+              >
+                拡張機能はこちら
+              </a>
+            </div>
+          </nav>
+          <h2 className="flex-container">
+            <Link href="/" target="blank_">
+              <img src="images/odango.gif" width="300px" />
+            </Link>
+            <div id="kirikae-button">
+              <img 
+                src="images/kirikae-button.png" 
+                alt="切り替えボタン" 
+                width="30px" 
+                id="switch-button" 
+                onClick={handleToggle}
+              />
+            </div>
+          </h2>
+        </header>
         {showTimer ? <Timer /> : <Omatsuri />}
-        <div id="kirikae-button">
-          <img 
-            src="images/kirikae-button.png" 
-            alt="切り替えボタン" 
-            width="30px" 
-            id="switch-button" 
-            onClick={handleToggle}
-          />
-        </div>
       </body>
     </html>
   );

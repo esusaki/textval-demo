@@ -11,10 +11,23 @@
 
 #kirikae-button {
     text-align: right;
+    padding-right: 20px;
 }
 
 #switch-button{
     cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.flex-container > a {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 /* @app/component/layout/omatsuri.jsx */
@@ -151,6 +164,10 @@ font-family: 'tamanegi';
 
     #kakigoriiKun{
         width: 100px;
+    }
+    
+    #kirikae-button {
+        padding-right: 10px; /* 小さい画面では余白を減らす */
     }
 }
 
