@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import convertText from '@/app/convert';
 import "@/app/style.css";
 
@@ -41,6 +41,9 @@ export default function omatsuri() {
   const [isLoading, setIsLoading] = useState(false);
   const [imgIce, setImgIce] = useState("images/ICE-v3-onoff-first.webp");
 
+  const [omikoshiUrl, setOmikoshiUrl] = useState("");
+  const [omikoshiDescription, setOmikoshiDescription] = useState("");
+
   async function buttonClicked() {
     setIsLoading(true);
 
@@ -56,20 +59,48 @@ export default function omatsuri() {
     setIsLoading(false);
   }
 
-  const seasonInfo = getSeason();
-  var omikoshiUrl;
-  var omikoshiDescription;
+  const weightedRandom = (items, weights) => {
+    const cumulativeWeights = [];
+    for (let i = 0; i < weights.length; i++) {
+      cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
+    }
+    const random = Math.random() * cumulativeWeights[cumulativeWeights.length - 1];
+    for (let i = 0; i < cumulativeWeights.length; i++) {
+      if (random < cumulativeWeights[i]) {
+        return items[i];
+      }
+    }
+  };
 
-  if (seasonInfo.season == "Normal"){
-    omikoshiUrl = "images/omikoshi_walking-long.gif";
-    omikoshiDescription = "お祭りでい";
-  } else if (seasonInfo.season == "NewYear_snake"){
-    omikoshiUrl = "images/NewYear_snake.gif";
-    omikoshiDescription = `1/1 元旦<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
-  }else {
-    omikoshiUrl = "images/Christmas.gif";
-    omikoshiDescription = `12/25 クリスマス<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
-  }
+  useEffect(() => {
+    const seasonInfo = getSeason();
+    let url;
+    let description;
+  
+    if (seasonInfo.season == "Normal"){
+      url = "images/omikoshi_walking-long.gif";
+      description = "お祭りでい";
+    } else if (seasonInfo.season == "NewYear_snake"){
+      url = "images/NewYear_snake.gif";
+      if (seasonInfo.daysUntilEvent === 0) {
+        description = `1/1 元旦<br>------------------------<br>今日はお正月🎍`;
+      } else {
+        description = `1/1 元旦<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
+      }
+    } else {
+      const christmasImg = ['images/Christmas.gif', 'images/Christmas_south.gif'];
+      const weights = [0.75, 0.25]; // 'images/Christmas.gif'の確率75%、'images/Christmas_south.gif'の確率25%
+      url = weightedRandom(christmasImg, weights);
+      if (seasonInfo.daysUntilEvent === 0) {
+        description = `12/25 クリスマス<br>------------------------<br>今日はクリスマス🎄`;
+      } else {
+        description = `12/25 クリスマス<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
+      }
+    }
+  
+    setOmikoshiUrl(url);
+    setOmikoshiDescription(description);
+  }, []);
 
   const [tooltipStyle, setTooltipStyle] = useState({});
 

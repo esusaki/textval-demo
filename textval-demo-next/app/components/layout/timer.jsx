@@ -83,6 +83,9 @@ export default function Timer(){
   const [isRunning, setIsRunning] = useState(false);
   const [isWorkPeriod, setIsWorkPeriod] = useState(true);
 
+  const [omikoshiUrl, setOmikoshiUrl] = useState("");
+  const [omikoshiDescription, setOmikoshiDescription] = useState("");
+
   useEffect(() => {
     let timer;
     if (isRunning && timeLeft > 0) {
@@ -90,8 +93,13 @@ export default function Timer(){
         setTimeLeft(prevTime => prevTime - 1);
       }, 1000);
     } else if (isRunning && timeLeft === 0) {
+      // setTimeLeft(isWorkPeriod ? stopTime * 60 : startTime * 60);
+      if (isWorkPeriod) {
+        setTimeLeft(stopTime > 0 ? stopTime * 60 : 1); // 休憩時間が0秒の場合は1秒に設定
+      } else {
+        setTimeLeft(startTime > 0 ? startTime * 60 : 1); // 作業時間が0秒の場合は1秒に設定
+      }
       setIsWorkPeriod(!isWorkPeriod);
-      setTimeLeft(isWorkPeriod ? stopTime * 60 : startTime * 60);
     }
 
     return () => clearInterval(timer);
@@ -125,10 +133,54 @@ export default function Timer(){
         sounds.play();
       }
     }
+    updateOmikoshiInfo();
 
     // 現在のisWorkPeriodの状態をrefに保存
     prevIsWorkPeriod.current = isWorkPeriod;
   }, [isWorkPeriod]);
+
+  const weightedRandom = (items, weights) => {
+    const cumulativeWeights = [];
+    for (let i = 0; i < weights.length; i++) {
+      cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
+    }
+    const random = Math.random() * cumulativeWeights[cumulativeWeights.length - 1];
+    for (let i = 0; i < cumulativeWeights.length; i++) {
+      if (random < cumulativeWeights[i]) {
+        return items[i];
+      }
+    }
+  };
+
+  const updateOmikoshiInfo = () => {
+    const seasonInfo = getSeason();
+    let url;
+    let description;
+
+    if (seasonInfo.season == "Normal"){
+      url = "images/omikoshi_walking-long.gif";
+      description = "お祭りでい";
+    } else if (seasonInfo.season == "NewYear_snake"){
+      url = "images/NewYear_snake.gif";
+      if (seasonInfo.daysUntilEvent === 0) {
+        description = `1/1 元旦<br>------------------------<br>今日はお正月🎍`;
+      } else {
+        description = `1/1 元旦<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
+      }
+    } else {
+      const christmasImg = ['images/Christmas.gif', 'images/Christmas_south.gif'];
+      const weights = [0.75, 0.25]; // 'images/Christmas.gif'の確率75%、'images/Christmas_south.gif'の確率25%
+      url = weightedRandom(christmasImg, weights);
+      if (seasonInfo.daysUntilEvent === 0) {
+        description = `12/25 クリスマス<br>------------------------<br>今日はクリスマス🎄`;
+      } else {
+        description = `12/25 クリスマス<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
+      }
+    }
+
+    setOmikoshiUrl(url);
+    setOmikoshiDescription(description);
+  };
 
   const handleStart = () => {
     setIsRunning(true);
@@ -150,21 +202,6 @@ export default function Timer(){
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
-
-  const seasonInfo = getSeason();
-  var omikoshiUrl;
-  var omikoshiDescription;
-
-  if (seasonInfo.season == "Normal"){
-    omikoshiUrl = "images/omikoshi_walking-long.gif";
-    omikoshiDescription = "お祭りでい";
-  } else if (seasonInfo.season == "NewYear_snake"){
-    omikoshiUrl = "images/NewYear_snake.gif";
-    omikoshiDescription = `1/1 元旦<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
-  }else {
-    omikoshiUrl = "images/Christmas.gif";
-    omikoshiDescription = `12/25 クリスマス<br>------------------------<br>あと ${seasonInfo.daysUntilEvent}日`;
-  }
 
   const [tooltipStyle, setTooltipStyle] = useState({});
 
